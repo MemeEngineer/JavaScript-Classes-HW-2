@@ -108,18 +108,20 @@ console.log(b1.withdraw(100))
 
 
 class CheckingAccount extends BankAccount{
-    constructor(overdraftEnabled){
+    constructor(ownerName, balance, acctNum,overdraftEnabled= false){
         super(ownerName, balance, acctNum)
         this.overdraftEnabled = overdraftEnabled;
     }
 withdraw(num){
-    if(overdraftEnabled === true){
+    this.overdraftEnabled = true
         this.balance -= num
-    }
+        console.log(this.balance)
+    
     }
 }
 const check1 = new CheckingAccount("jim", 100, 123)
-console.log(check1.b1.withdraw(1000))
+console.log(check1.withdraw(1000))
+console.log(check1.balance)
 
 
 class SavingsAccount extends BankAccount{
@@ -127,3 +129,6 @@ class SavingsAccount extends BankAccount{
         console.log(`You cannot withdraw ${num}`)
     }
 }
+
+const saving1 = new SavingsAccount("tom", 200, 555)
+console.log(saving1.withdraw(400))
